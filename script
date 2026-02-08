@@ -2,7 +2,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Cấu hình cá nhân của @bphong0946
 local MY_ROBLOX_USER_ID = 2650786301 
-local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId="2650786301"&width=420&height=420&format=png"
+local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId="......"&width=420&height=420&format=png"
 
 local Window = Rayfield:CreateWindow({
    Name = "Universe Script by @bphong0946 🌌",
