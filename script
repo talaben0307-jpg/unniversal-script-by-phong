@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Full Scripts - High Security",
+    SubTitle = "⚡ Full Scripts - Oreo Tech Update",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -22,7 +22,7 @@ local Tabs = {
 }
 
 -- ==========================================
--- 1. TAB: OP SCRIPT (ẨN KEY - CHỈ HIỆN EMOTE)
+-- 1. TAB: OP SCRIPT (NHẬP KEY HIỆN EMOTE)
 -- ==========================================
 local OpKey = "OP_0946" 
 local KeyUnlocked = false
@@ -31,7 +31,7 @@ local OpSection = Tabs.Op:AddSection("🔐 Xác thực Admin")
 Tabs.Op:AddInput("Input", {
     Title = "Nhập mật mã",
     Default = "",
-    Placeholder = "Nhập mã tại đây...", -- Đã xóa chữ lộ Key
+    Placeholder = "Nhập mã tại đây...",
     Callback = function(Value) _G.InputOpKey = Value end
 })
 
@@ -57,7 +57,7 @@ Tabs.Op:AddButton({
 })
 
 -- ==========================================
--- 2. TAB: HEAVYWEIGHT FISHING 🎣 (ĐỦ 3 SCRIPT)
+-- 2. TAB: HEAVYWEIGHT FISHING 🎣
 -- ==========================================
 Tabs.Fish:AddSection("🔥 Featured Scripts")
 Tabs.Fish:AddButton({
@@ -74,7 +74,7 @@ Tabs.Fish:AddButton({
 })
 
 -- ==========================================
--- 3. TAB: TSB SCRIPT ⚔️ (ĐỦ HUB & ANIMATION)
+-- 3. TAB: TSB SCRIPT ⚔️ (ĐÃ THÊM OREO TECH)
 -- ==========================================
 Tabs.TSB:AddSection("🎭 Animations")
 Tabs.TSB:AddButton({
@@ -83,6 +83,11 @@ Tabs.TSB:AddButton({
 })
 
 Tabs.TSB:AddSection("⭐ Main Hubs")
+Tabs.TSB:AddButton({
+    Title = "🍪 Oreo Tech Script",
+    Description = "Script TSB cực mạnh mới thêm",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/OreoTech/refs/heads/main/Protected_6856895483929371.lua"))() end
+})
 Tabs.TSB:AddButton({
     Title = "🛡️ Tthanh Hub TSB",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end
@@ -93,7 +98,7 @@ Tabs.TSB:AddButton({
 })
 
 -- ==========================================
--- 4. TAB: PLAYER TOOLS 🛠️ (ĐỦ TOOL)
+-- 4. TAB: PLAYER TOOLS 🛠️
 -- ==========================================
 Tabs.Player:AddSection("Admin Tools")
 Tabs.Player:AddButton({
@@ -110,7 +115,7 @@ Tabs.Player:AddButton({
 })
 
 -- ==========================================
--- 5. TAB: VISUALS ✨ (ĐỦ RTX)
+-- 5. TAB: VISUALS ✨
 -- ==========================================
 Tabs.Visual:AddSection("Graphics")
 Tabs.Visual:AddButton({
