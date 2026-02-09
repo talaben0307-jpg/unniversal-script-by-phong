@@ -2,15 +2,15 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Vui lòng chờ trong giây lát",
+    SubTitle = "⚡ Đang chạy trên Xeno Client",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, 
+    Acrylic = true, -- Hiệu ứng mờ nền cực đẹp
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl
+    MinimizeKey = Enum.KeyCode.LeftControl -- Phím để ẩn/hiện menu
 })
 
--- Fluent sử dụng Icon từ thư viện Lucide (ví dụ: "fish", "swords", "user", "eye")
+-- Tạo các Tab theo phong cách Fluent
 local Tabs = {
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
@@ -101,10 +101,10 @@ Tabs.Visual:AddButton({
     end
 })
 
--- HIỆN THÔNG BÁO SAU KHI LOAD XONG
+-- THÔNG BÁO KẾT THÚC
 Fluent:Notify({
     Title = "KÍCH HOẠT THÀNH CÔNG",
-    Content = "Script by Bphong0946",
+    Content = "Script by Bphong0946 đã sẵn sàng!",
     Duration = 6.5
 })
 
