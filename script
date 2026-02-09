@@ -1,113 +1,111 @@
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local Window = Rayfield:CreateWindow({
-   Name = "Universe Script by @bphong0946 🌌",
-   LoadingTitle = "⚡ ĐANG TẢI HỆ THỐNG...",
-   LoadingSubtitle = "Vui lòng chờ trong giây lát",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "UniverseConfig_bphong"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink",
-      RememberJoins = true
-   },
-   KeySystem = false, 
+local Window = Fluent:CreateWindow({
+    Title = "Universe Script by @bphong0946 🌌",
+    SubTitle = "⚡ Vui lòng chờ trong giây lát",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, 
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
--- HIỆN THÔNG BÁO SAU KHI LOAD XONG
-Rayfield:Notify({
-   Title = "KÍCH HOẠT THÀNH CÔNG",
-   Content = "Script by Bphong0946",
-   Duration = 6.5,
-})
+-- Fluent sử dụng Icon từ thư viện Lucide (ví dụ: "fish", "swords", "user", "eye")
+local Tabs = {
+    Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
+    TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
+    Player = Window:AddTab({ Title = "Player Tools", Icon = "user" }),
+    Visual = Window:AddTab({ Title = "Visuals", Icon = "eye" })
+}
 
 -- ==========================================
 -- TAB: HEAVYWEIGHT FISHING 🎣
 -- ==========================================
-local FishTab = Window:CreateTab("Heavyweight Fishing")
+Tabs.Fish:AddSection("🔥 Featured Scripts")
 
-FishTab:CreateSection("🔥 Featured Scripts")
-
-FishTab:CreateButton({
-   Name = "📜 Super Couscous Script",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))()
-   end,
+Tabs.Fish:AddButton({
+    Title = "📜 Super Couscous Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))()
+    end
 })
 
-FishTab:CreateButton({
-   Name = "🌟 Khfresh Hub",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))()
-   end,
+Tabs.Fish:AddButton({
+    Title = "🌟 Khfresh Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))()
+    end
 })
 
-FishTab:CreateButton({
-   Name = "🚀 Zenith Hub (Z Hub)",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))()
-   end,
+Tabs.Fish:AddButton({
+    Title = "🚀 Zenith Hub (Z Hub)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))()
+    end
 })
 
 -- ==========================================
 -- TAB: TSB SCRIPT ⚔️
 -- ==========================================
-local TSBTab = Window:CreateTab("TSB Script") 
+Tabs.TSB:AddSection("⭐ Top Tier Scripts")
 
-TSBTab:CreateSection("⭐ Top Tier Scripts")
-
-TSBTab:CreateButton({
-   Name = "🛡️ Tthanh Hub TSB",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))()
-   end,
+Tabs.TSB:AddButton({
+    Title = "🛡️ Tthanh Hub TSB",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))()
+    end
 })
 
-TSBTab:CreateButton({
-   Name = "⚔️ Combat GUI TSB",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))()
-   end,
+Tabs.TSB:AddButton({
+    Title = "⚔️ Combat GUI TSB",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))()
+    end
 })
 
 -- ==========================================
 -- TAB: PLAYER TOOLS 🛠️
 -- ==========================================
-local PlayerTab = Window:CreateTab("Player Tools")
+Tabs.Player:AddSection("Admin & Special")
 
-PlayerTab:CreateSection("Admin & Special")
-
-PlayerTab:CreateButton({
-   Name = "Infinite Yield (Admin)",
-   Callback = function()
-      loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-   end,
+Tabs.Player:AddButton({
+    Title = "Infinite Yield (Admin)",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
 })
 
-PlayerTab:CreateButton({ 
-    Name = "Fly GUI V3", 
-    Callback = function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() 
-    end 
+Tabs.Player:AddButton({
+    Title = "Fly GUI V3",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+    end
 })
 
-PlayerTab:CreateButton({ 
-    Name = "Invisible", 
-    Callback = function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() 
-    end 
+Tabs.Player:AddButton({
+    Title = "Invisible",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))()
+    end
 })
 
 -- ==========================================
 -- TAB: VISUALS ✨
 -- ==========================================
-local VisualTab = Window:CreateTab("Visuals")
+Tabs.Visual:AddSection("Visual Effects")
 
-VisualTab:CreateButton({
-   Name = "RTX Shader",
-   Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))()
-   end,
+Tabs.Visual:AddButton({
+    Title = "RTX Shader",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))()
+    end
 })
+
+-- HIỆN THÔNG BÁO SAU KHI LOAD XONG
+Fluent:Notify({
+    Title = "KÍCH HOẠT THÀNH CÔNG",
+    Content = "Script by Bphong0946",
+    Duration = 6.5
+})
+
+Window:SelectTab(1)
