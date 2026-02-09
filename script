@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Key System for Emotes",
+    SubTitle = "⚡ Bản Update: Key for Emotes",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -11,10 +11,10 @@ local Window = Fluent:CreateWindow({
 })
 
 -- ==========================================
--- KHỞI TẠO CÁC TAB (5 TABS)
+-- KHỞI TẠO ĐẦY ĐỦ CÁC TAB
 -- ==========================================
 local Tabs = {
-    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }), -- Script Emote sẽ nằm trong này sau khi nhập Key
+    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
     Player = Window:AddTab({ Title = "Player Tools", Icon = "user" }),
@@ -22,14 +22,14 @@ local Tabs = {
 }
 
 -- ==========================================
--- TAB: OP SCRIPT (NHẬP KEY HIỆN EMOTE) 🔐
+-- TAB: OP SCRIPT (CHỈ HIỆN EMOTE KHI CÓ KEY) 🔐
 -- ==========================================
 local OpKey = "BPHONG_OP" 
 local KeyUnlocked = false
 local OpSection = Tabs.Op:AddSection("🔐 Bảo mật VIP")
 
 Tabs.Op:AddInput("Input", {
-    Title = "Nhập mã để mở khóa",
+    Title = "Nhập mã vào đây trước",
     Default = "",
     Placeholder = "Key: BPHONG_OP",
     Callback = function(Value) _G.InputOpKey = Value end
@@ -37,37 +37,37 @@ Tabs.Op:AddInput("Input", {
 
 Tabs.Op:AddButton({
     Title = "🔓 XÁC NHẬN MỞ KHÓA",
-    Description = "Nhập key bên trên rồi bấm để hiện script",
+    Description = "Nhập key ở trên rồi mới bấm để hiện script Emote",
     Callback = function()
         if _G.InputOpKey == OpKey then
             if not KeyUnlocked then
                 KeyUnlocked = true
-                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã hiện script Emote!", Duration = 5})
+                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã mở khóa script Emote!", Duration = 5})
                 
-                -- HIỆN SCRIPT EMOTE NGAY BÊN DƯỚI
-                Tabs.Op:AddSection("🎭 Emote R15 Section")
+                -- XÓA BỎ 2 CÁI CŨ, CHỈ THÊM EMOTE
+                Tabs.Op:AddSection("🎭 DANH SÁCH EMOTE")
                 Tabs.Op:AddButton({
-                    Title = "Full Emote OP Script",
-                    Description = "Sử dụng toàn bộ Emote R15",
+                    Title = "🌟 Full Emote OP Script (R15)",
+                    Description = "Mở khóa toàn bộ Emote trong game",
                     Callback = function()
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
                     end
                 })
             end
         else
-            Fluent:Notify({Title = "THẤT BẠI", Content = "Sai Key rồi bạn ơi!", Duration = 5})
+            Fluent:Notify({Title = "THẤT BẠI", Content = "Sai Key! Vui lòng thử lại.", Duration = 5})
         end
     end
 })
 
 -- ==========================================
--- CÁC TAB KHÁC (GIỮ NGUYÊN)
+-- CÁC TAB KHÁC (GIỮ NGUYÊN ĐỂ KHÔNG BỊ MẤT)
 -- ==========================================
 Tabs.Fish:AddSection("🔥 Scripts Câu Cá")
 Tabs.Fish:AddButton({ Title = "📜 Super Couscous Script", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end })
 Tabs.Fish:AddButton({ Title = "🌟 Khfresh Hub", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end })
 
-Tabs.TSB:AddSection("🎭 Animations & Hubs")
+Tabs.TSB:AddSection("🎭 Animations & Special")
 Tabs.TSB:AddButton({ Title = "🎭 Animation Strong Guest", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end })
 Tabs.TSB:AddButton({ Title = "🛡️ Tthanh Hub TSB", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end })
 
