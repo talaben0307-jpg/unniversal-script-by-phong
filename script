@@ -1,10 +1,5 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
--- Cấu hình cá nhân của @bphong0946
-local MY_ROBLOX_USER_ID = 2650786301 
--- Đã sửa lỗi nối chuỗi biến ID vào link ảnh
-local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. MY_ROBLOX_USER_ID .. "&width=420&height=420&format=png"
-
 local Window = Rayfield:CreateWindow({
    Name = "Universe Script by @bphong0946 🌌",
    LoadingTitle = "⚡ ĐANG TẢI HỆ THỐNG...",
@@ -18,7 +13,7 @@ local Window = Rayfield:CreateWindow({
       Invite = "noinvitelink",
       RememberJoins = true
    },
-   KeySystem = false, -- Bạn có thể bật true nếu muốn dùng Key
+   KeySystem = false, 
 })
 
 -- HIỆN THÔNG BÁO SAU KHI LOAD XONG
@@ -26,13 +21,12 @@ Rayfield:Notify({
    Title = "KÍCH HOẠT THÀNH CÔNG",
    Content = "Script by Bphong0946",
    Duration = 6.5,
-   Image = 4483362458, -- Dùng ID icon mặc định để đảm bảo luôn hiện
 })
 
 -- ==========================================
 -- TAB: HEAVYWEIGHT FISHING 🎣
 -- ==========================================
-local FishTab = Window:CreateTab("Heavyweight Fishing", 4483362458)
+local FishTab = Window:CreateTab("Heavyweight Fishing")
 
 FishTab:CreateSection("🔥 Featured Scripts")
 
@@ -60,7 +54,7 @@ FishTab:CreateButton({
 -- ==========================================
 -- TAB: TSB SCRIPT ⚔️
 -- ==========================================
-local TSBTab = Window:CreateTab("TSB Script", 4483362458) 
+local TSBTab = Window:CreateTab("TSB Script") 
 
 TSBTab:CreateSection("⭐ Top Tier Scripts")
 
@@ -81,7 +75,7 @@ TSBTab:CreateButton({
 -- ==========================================
 -- TAB: PLAYER TOOLS 🛠️
 -- ==========================================
-local PlayerTab = Window:CreateTab("Player Tools", 4483362458)
+local PlayerTab = Window:CreateTab("Player Tools")
 
 PlayerTab:CreateSection("Admin & Special")
 
@@ -109,7 +103,7 @@ PlayerTab:CreateButton({
 -- ==========================================
 -- TAB: VISUALS ✨
 -- ==========================================
-local VisualTab = Window:CreateTab("Visuals", 4483362458)
+local VisualTab = Window:CreateTab("Visuals")
 
 VisualTab:CreateButton({
    Name = "RTX Shader",
