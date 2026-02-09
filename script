@@ -2,18 +2,19 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Full Tab + Nút Lơ Lửng",
+    SubTitle = "⚡ FULL VERSION (Fluent)",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.K -- Phím K để đóng/mở
+    MinimizeKey = Enum.KeyCode.K 
 })
 
--- Tạo lại đầy đủ 4 Tab
+-- KHỞI TẠO TẤT CẢ CÁC TAB
 local Tabs = {
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
+    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
     Player = Window:AddTab({ Title = "Player Tools", Icon = "user" }),
     Visual = Window:AddTab({ Title = "Visuals", Icon = "eye" })
 }
@@ -42,8 +43,16 @@ Tabs.Fish:AddButton({
 })
 
 -- ==========================================
--- TAB: TSB SCRIPT ⚔️ (ĐÃ TRỞ LẠI ĐÂY)
+-- TAB: TSB SCRIPT ⚔️
 -- ==========================================
+Tabs.TSB:AddSection("🎭 Animations & Special")
+Tabs.TSB:AddButton({
+    Title = "🎭 Animation Character (Strong Guest)",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))()
+    end
+})
+
 Tabs.TSB:AddSection("⭐ Top Tier Scripts")
 Tabs.TSB:AddButton({
     Title = "🛡️ Tthanh Hub TSB",
@@ -55,6 +64,40 @@ Tabs.TSB:AddButton({
     Title = "⚔️ Combat GUI TSB",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))()
+    end
+})
+
+-- ==========================================
+-- TAB: OP SCRIPT (CÓ KEY) 🔒
+-- ==========================================
+local OpKey = "BPHONG_OP" -- Bạn có thể đổi key tại đây
+local KeySection = Tabs.Op:AddSection("🔒 Nhập Key để mở khóa")
+
+local KeyInput = Tabs.Op:AddInput("Input", {
+    Title = "Nhập Key",
+    Description = "Key là: BPHONG_OP",
+    Default = "",
+    Placeholder = "Nhập mã vào đây...",
+    Callback = function(Value)
+        _G.InsertedKey = Value
+    end
+})
+
+Tabs.Op:AddButton({
+    Title = "Xác nhận mở khóa",
+    Callback = function()
+        if _G.InsertedKey == OpKey then
+            Fluent:Notify({Title = "Thành công", Content = "Đã mở khóa Tab OP!", Duration = 3})
+            KeySection:SetTitle("🔥 OP SCRIPTS ĐÃ MỞ")
+            
+            -- Các Script cực mạnh thêm ở đây
+            Tabs.Op:AddButton({
+                Title = "🚀 Universal Auto Farm",
+                Callback = function() print("Chạy Auto Farm...") end
+            })
+        else
+            Fluent:Notify({Title = "Thất bại", Content = "Sai Key rồi bạn ơi!", Duration = 3})
+        end
     end
 })
 
@@ -114,18 +157,17 @@ MainButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MainButton.TextSize = 20
 MainButton.Draggable = true 
 
-UICorner.CornerRadius = UDim.new(0, 10) -- Nút bo góc nhìn cho hiện đại
+UICorner.CornerRadius = UDim.new(0, 10)
 UICorner.Parent = MainButton
 
 MainButton.MouseButton1Click:Connect(function()
-    -- Giả lập nhấn phím K để đóng/mở menu Fluent
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.K, false, game)
 end)
 
--- HOÀN TẤT
+-- THÔNG BÁO KẾT THÚC
 Fluent:Notify({
-    Title = "HỆ THỐNG SẴN SÀNG",
-    Content = "Đã tải đủ 4 Tab. Nhấn K hoặc Nút để mở!",
+    Title = "Universe Script",
+    Content = "Đã tải đầy đủ 5 Tab! Chúc bạn chơi game vui vẻ.",
     Duration = 5
 })
 
