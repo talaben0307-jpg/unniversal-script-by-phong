@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ BẢN TỔNG HỢP CUỐI CÙNG - FULL 5 TABS",
+    SubTitle = "⚡ Key System for Emotes",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -11,10 +11,10 @@ local Window = Fluent:CreateWindow({
 })
 
 -- ==========================================
--- KHỞI TẠO TẤT CẢ 5 TAB
+-- KHỞI TẠO CÁC TAB (5 TABS)
 -- ==========================================
 local Tabs = {
-    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
+    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }), -- Script Emote sẽ nằm trong này sau khi nhập Key
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
     Player = Window:AddTab({ Title = "Player Tools", Icon = "user" }),
@@ -22,14 +22,14 @@ local Tabs = {
 }
 
 -- ==========================================
--- 1. TAB: OP SCRIPT (CÓ KHÓA KEY)
+-- TAB: OP SCRIPT (NHẬP KEY HIỆN EMOTE) 🔐
 -- ==========================================
 local OpKey = "BPHONG_OP" 
 local KeyUnlocked = false
 local OpSection = Tabs.Op:AddSection("🔐 Bảo mật VIP")
 
 Tabs.Op:AddInput("Input", {
-    Title = "Nhập mã vào đây trước",
+    Title = "Nhập mã để mở khóa",
     Default = "",
     Placeholder = "Key: BPHONG_OP",
     Callback = function(Value) _G.InputOpKey = Value end
@@ -37,100 +37,46 @@ Tabs.Op:AddInput("Input", {
 
 Tabs.Op:AddButton({
     Title = "🔓 XÁC NHẬN MỞ KHÓA",
-    Description = "Nhập key ở ô trên rồi mới bấm nút này",
+    Description = "Nhập key bên trên rồi bấm để hiện script",
     Callback = function()
         if _G.InputOpKey == OpKey then
             if not KeyUnlocked then
                 KeyUnlocked = true
-                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã mở khóa các tính năng OP!", Duration = 5})
-                Tabs.Op:AddSection("🔥 DANH SÁCH OP SCRIPTS")
+                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã hiện script Emote!", Duration = 5})
+                
+                -- HIỆN SCRIPT EMOTE NGAY BÊN DƯỚI
+                Tabs.Op:AddSection("🎭 Emote R15 Section")
                 Tabs.Op:AddButton({
-                    Title = "🚀 Universal Auto Farm (OP)",
-                    Callback = function() print("Running OP Auto Farm...") end
-                })
-                Tabs.Op:AddButton({
-                    Title = "🎯 Aimbot & ESP Ultra (OP)",
-                    Callback = function() print("Running OP Combat...") end
+                    Title = "Full Emote OP Script",
+                    Description = "Sử dụng toàn bộ Emote R15",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
+                    end
                 })
             end
         else
-            Fluent:Notify({Title = "THẤT BẠI", Content = "Sai Key! Kiểm tra lại mã.", Duration = 5})
+            Fluent:Notify({Title = "THẤT BẠI", Content = "Sai Key rồi bạn ơi!", Duration = 5})
         end
     end
 })
 
 -- ==========================================
--- 2. TAB: HEAVYWEIGHT FISHING 🎣
+-- CÁC TAB KHÁC (GIỮ NGUYÊN)
 -- ==========================================
 Tabs.Fish:AddSection("🔥 Scripts Câu Cá")
+Tabs.Fish:AddButton({ Title = "📜 Super Couscous Script", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end })
+Tabs.Fish:AddButton({ Title = "🌟 Khfresh Hub", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end })
 
-Tabs.Fish:AddButton({
-    Title = "📜 Super Couscous Script",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end
-})
+Tabs.TSB:AddSection("🎭 Animations & Hubs")
+Tabs.TSB:AddButton({ Title = "🎭 Animation Strong Guest", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end })
+Tabs.TSB:AddButton({ Title = "🛡️ Tthanh Hub TSB", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end })
 
-Tabs.Fish:AddButton({
-    Title = "🌟 Khfresh Hub",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end
-})
+Tabs.Player:AddSection("Utilities")
+Tabs.Player:AddButton({ Title = "Infinite Yield", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end })
+Tabs.Player:AddButton({ Title = "Fly GUI V3", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end })
 
-Tabs.Fish:AddButton({
-    Title = "🚀 Zenith Hub (Z Hub)",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))() end
-})
-
--- ==========================================
--- 3. TAB: TSB SCRIPT ⚔️
--- ==========================================
-Tabs.TSB:AddSection("🎭 Animations")
-
-Tabs.TSB:AddButton({
-    Title = "🎭 Animation Strong Guest",
-    Description = "Script animation nhân vật TSB",
-    Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end
-})
-
-Tabs.TSB:AddSection("⭐ Main Hubs")
-
-Tabs.TSB:AddButton({
-    Title = "🛡️ Tthanh Hub TSB",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end
-})
-
-Tabs.TSB:AddButton({
-    Title = "⚔️ Combat GUI TSB",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))() end
-})
-
--- ==========================================
--- 4. TAB: PLAYER TOOLS 🛠️
--- ==========================================
-Tabs.Player:AddSection("Admin & Utilities")
-
-Tabs.Player:AddButton({
-    Title = "Infinite Yield (Admin)",
-    Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end
-})
-
-Tabs.Player:AddButton({
-    Title = "Fly GUI V3",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end
-})
-
-Tabs.Player:AddButton({
-    Title = "Invisible (Tàng hình)",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() end
-})
-
--- ==========================================
--- 5. TAB: VISUALS ✨
--- ==========================================
-Tabs.Visual:AddSection("Graphics Enhancements")
-
-Tabs.Visual:AddButton({
-    Title = "RTX Shader",
-    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))() end
-})
+Tabs.Visual:AddSection("Graphics")
+Tabs.Visual:AddButton({ Title = "RTX Shader", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))() end })
 
 -- ==========================================
 -- NÚT LƠ LỬNG (FLOATING BUTTON)
@@ -138,20 +84,16 @@ Tabs.Visual:AddButton({
 local ToggleButton = Instance.new("ScreenGui")
 local MainButton = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
-
-ToggleButton.Name = "FloatingToggle"
 ToggleButton.Parent = game:GetService("CoreGui")
-ToggleButton.ResetOnSpawn = false
-
-MainButton.Name = "MainButton"
 MainButton.Parent = ToggleButton
-MainButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-MainButton.Position = UDim2.new(0.05, 0, 0.4, 0)
 MainButton.Size = UDim2.new(0, 50, 0, 50)
+MainButton.Position = UDim2.new(0.05, 0, 0.4, 0)
 MainButton.Text = "K"
-MainButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MainButton.Font = Enum.Font.GothamBold
-MainButton.TextSize = 20
 MainButton.Draggable = true 
-
 UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = MainButton
+MainButton.MouseButton1Click:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.K, false, game)
+end)
+
+Window:SelectTab(1)
