@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ FULL VERSION (Fluent)",
+    SubTitle = "⚡ Full 5 Tabs - Xeno Client",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -10,11 +10,11 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.K 
 })
 
--- KHỞI TẠO TẤT CẢ CÁC TAB
+-- KHỞI TẠO TẤT CẢ 5 TAB
 local Tabs = {
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
-    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
+    Op = Window:AddTab({ Title = "Op script", Icon = "gem" }), -- ĐÂY NÈ!
     Player = Window:AddTab({ Title = "Player Tools", Icon = "user" }),
     Visual = Window:AddTab({ Title = "Visuals", Icon = "eye" })
 }
@@ -45,7 +45,7 @@ Tabs.Fish:AddButton({
 -- ==========================================
 -- TAB: TSB SCRIPT ⚔️
 -- ==========================================
-Tabs.TSB:AddSection("🎭 Animations & Special")
+Tabs.TSB:AddSection("🎭 Animations")
 Tabs.TSB:AddButton({
     Title = "🎭 Animation Character (Strong Guest)",
     Callback = function()
@@ -53,7 +53,7 @@ Tabs.TSB:AddButton({
     end
 })
 
-Tabs.TSB:AddSection("⭐ Top Tier Scripts")
+Tabs.TSB:AddSection("⭐ Main Hubs")
 Tabs.TSB:AddButton({
     Title = "🛡️ Tthanh Hub TSB",
     Callback = function()
@@ -70,33 +70,38 @@ Tabs.TSB:AddButton({
 -- ==========================================
 -- TAB: OP SCRIPT (CÓ KEY) 🔒
 -- ==========================================
-local OpKey = "BPHONG_OP" -- Bạn có thể đổi key tại đây
-local KeySection = Tabs.Op:AddSection("🔒 Nhập Key để mở khóa")
+local OpKey = "BPHONG_OP" 
+local KeySection = Tabs.Op:AddSection("🔒 Khóa nội dung")
 
 local KeyInput = Tabs.Op:AddInput("Input", {
-    Title = "Nhập Key",
-    Description = "Key là: BPHONG_OP",
+    Title = "Nhập Key để sử dụng",
+    Description = "Key mặc định: BPHONG_OP",
     Default = "",
-    Placeholder = "Nhập mã vào đây...",
+    Placeholder = "Dán key vào đây...",
     Callback = function(Value)
-        _G.InsertedKey = Value
+        _G.MyOpKey = Value
     end
 })
 
 Tabs.Op:AddButton({
-    Title = "Xác nhận mở khóa",
+    Title = "Xác nhận Key",
+    Description = "Bấm để kiểm tra mã truy cập",
     Callback = function()
-        if _G.InsertedKey == OpKey then
-            Fluent:Notify({Title = "Thành công", Content = "Đã mở khóa Tab OP!", Duration = 3})
-            KeySection:SetTitle("🔥 OP SCRIPTS ĐÃ MỞ")
+        if _G.MyOpKey == OpKey then
+            Fluent:Notify({Title = "CHÍNH XÁC", Content = "Đã mở khóa các script OP!", Duration = 3})
+            KeySection:SetTitle("🔥 DANH SÁCH OP SCRIPT")
             
-            -- Các Script cực mạnh thêm ở đây
+            -- Các Script OP bạn muốn thêm vào đây
             Tabs.Op:AddButton({
-                Title = "🚀 Universal Auto Farm",
-                Callback = function() print("Chạy Auto Farm...") end
+                Title = "🚀 Universal Auto Farm (OP)",
+                Callback = function() print("Auto Farm Activated") end
+            })
+            Tabs.Op:AddButton({
+                Title = "🎯 Aimbot & ESP Ultra",
+                Callback = function() print("Aimbot Activated") end
             })
         else
-            Fluent:Notify({Title = "Thất bại", Content = "Sai Key rồi bạn ơi!", Duration = 3})
+            Fluent:Notify({Title = "SAI KEY", Content = "Vui lòng thử lại!", Duration = 3})
         end
     end
 })
@@ -104,35 +109,23 @@ Tabs.Op:AddButton({
 -- ==========================================
 -- TAB: PLAYER TOOLS 🛠️
 -- ==========================================
-Tabs.Player:AddSection("Admin & Special")
+Tabs.Player:AddSection("Admin Tools")
 Tabs.Player:AddButton({
-    Title = "Infinite Yield (Admin)",
-    Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-    end
+    Title = "Infinite Yield",
+    Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end
 })
 Tabs.Player:AddButton({
     Title = "Fly GUI V3",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
-    end
-})
-Tabs.Player:AddButton({
-    Title = "Invisible",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))()
-    end
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end
 })
 
 -- ==========================================
 -- TAB: VISUALS ✨
 -- ==========================================
-Tabs.Visual:AddSection("Visual Effects")
+Tabs.Visual:AddSection("Graphics")
 Tabs.Visual:AddButton({
     Title = "RTX Shader",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))()
-    end
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))() end
 })
 
 -- ==========================================
@@ -149,11 +142,11 @@ ToggleButton.ResetOnSpawn = false
 MainButton.Name = "MainButton"
 MainButton.Parent = ToggleButton
 MainButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-MainButton.Position = UDim2.new(0.1, 0, 0.4, 0)
+MainButton.Position = UDim2.new(0.05, 0, 0.4, 0)
 MainButton.Size = UDim2.new(0, 50, 0, 50)
-MainButton.Font = Enum.Font.GothamBold
 MainButton.Text = "K"
 MainButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MainButton.Font = Enum.Font.GothamBold
 MainButton.TextSize = 20
 MainButton.Draggable = true 
 
@@ -167,7 +160,7 @@ end)
 -- THÔNG BÁO KẾT THÚC
 Fluent:Notify({
     Title = "Universe Script",
-    Content = "Đã tải đầy đủ 5 Tab! Chúc bạn chơi game vui vẻ.",
+    Content = "Đã load đủ 5 Tab. Bấm K để mở!",
     Duration = 5
 })
 
