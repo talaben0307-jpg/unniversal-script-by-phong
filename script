@@ -2,14 +2,15 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Bản Fluent + Nút Lơ Lửng",
+    SubTitle = "⚡ Full Tab + Nút Lơ Lửng",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.K -- ĐÃ ĐỔI SANG PHÍM K
+    MinimizeKey = Enum.KeyCode.K -- Phím K để đóng/mở
 })
 
+-- Tạo lại đầy đủ 4 Tab
 local Tabs = {
     Fish = Window:AddTab({ Title = "Heavyweight Fishing", Icon = "fish" }),
     TSB = Window:AddTab({ Title = "TSB Script", Icon = "swords" }),
@@ -17,7 +18,9 @@ local Tabs = {
     Visual = Window:AddTab({ Title = "Visuals", Icon = "eye" })
 }
 
--- [ PHẦN NÚT BẤM (BUTTONS) GIỮ NGUYÊN NHƯ CŨ ] --
+-- ==========================================
+-- TAB: HEAVYWEIGHT FISHING 🎣
+-- ==========================================
 Tabs.Fish:AddSection("🔥 Featured Scripts")
 Tabs.Fish:AddButton({
     Title = "📜 Super Couscous Script",
@@ -25,14 +28,39 @@ Tabs.Fish:AddButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))()
     end
 })
-
 Tabs.Fish:AddButton({
     Title = "🌟 Khfresh Hub",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))()
     end
 })
+Tabs.Fish:AddButton({
+    Title = "🚀 Zenith Hub (Z Hub)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))()
+    end
+})
 
+-- ==========================================
+-- TAB: TSB SCRIPT ⚔️ (ĐÃ TRỞ LẠI ĐÂY)
+-- ==========================================
+Tabs.TSB:AddSection("⭐ Top Tier Scripts")
+Tabs.TSB:AddButton({
+    Title = "🛡️ Tthanh Hub TSB",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))()
+    end
+})
+Tabs.TSB:AddButton({
+    Title = "⚔️ Combat GUI TSB",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))()
+    end
+})
+
+-- ==========================================
+-- TAB: PLAYER TOOLS 🛠️
+-- ==========================================
 Tabs.Player:AddSection("Admin & Special")
 Tabs.Player:AddButton({
     Title = "Infinite Yield (Admin)",
@@ -40,9 +68,32 @@ Tabs.Player:AddButton({
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     end
 })
+Tabs.Player:AddButton({
+    Title = "Fly GUI V3",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+    end
+})
+Tabs.Player:AddButton({
+    Title = "Invisible",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))()
+    end
+})
 
 -- ==========================================
--- ĐOẠN CODE TẠO NÚT LƠ LỬNG (FLOATING BUTTON)
+-- TAB: VISUALS ✨
+-- ==========================================
+Tabs.Visual:AddSection("Visual Effects")
+Tabs.Visual:AddButton({
+    Title = "RTX Shader",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))()
+    end
+})
+
+-- ==========================================
+-- NÚT LƠ LỬNG (FLOATING BUTTON)
 -- ==========================================
 local ToggleButton = Instance.new("ScreenGui")
 local MainButton = Instance.new("TextButton")
@@ -54,27 +105,27 @@ ToggleButton.ResetOnSpawn = false
 
 MainButton.Name = "MainButton"
 MainButton.Parent = ToggleButton
-MainButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-MainButton.Position = UDim2.new(0.1, 0, 0.5, 0) -- Vị trí ban đầu
-MainButton.Size = UDim2.new(0, 50, 0, 50) -- Kích thước nút
+MainButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainButton.Position = UDim2.new(0.1, 0, 0.4, 0)
+MainButton.Size = UDim2.new(0, 50, 0, 50)
 MainButton.Font = Enum.Font.GothamBold
-MainButton.Text = "K" -- Chữ trên nút
+MainButton.Text = "K"
 MainButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MainButton.TextSize = 20
-MainButton.Draggable = true -- Cho phép kéo thả nút trên màn hình
+MainButton.Draggable = true 
 
-UICorner.CornerRadius = UDim.new(0, 100) -- Làm nút hình tròn
+UICorner.CornerRadius = UDim.new(0, 10) -- Nút bo góc nhìn cho hiện đại
 UICorner.Parent = MainButton
 
--- Logic khi bấm nút lơ lửng
 MainButton.MouseButton1Click:Connect(function()
+    -- Giả lập nhấn phím K để đóng/mở menu Fluent
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.K, false, game)
 end)
 
--- THÔNG BÁO KẾT THÚC
+-- HOÀN TẤT
 Fluent:Notify({
-    Title = "SẴN SÀNG!",
-    Content = "Bấm K hoặc Nút tròn để mở Menu",
+    Title = "HỆ THỐNG SẴN SÀNG",
+    Content = "Đã tải đủ 4 Tab. Nhấn K hoặc Nút để mở!",
     Duration = 5
 })
 
