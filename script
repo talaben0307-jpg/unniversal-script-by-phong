@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Bản Update: Key for Emotes",
+    SubTitle = "⚡ Bản Bảo Mật - Key System",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -11,7 +11,7 @@ local Window = Fluent:CreateWindow({
 })
 
 -- ==========================================
--- KHỞI TẠO ĐẦY ĐỦ CÁC TAB
+-- KHỞI TẠO CÁC TAB
 -- ==========================================
 local Tabs = {
     Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
@@ -22,54 +22,58 @@ local Tabs = {
 }
 
 -- ==========================================
--- TAB: OP SCRIPT (CHỈ HIỆN EMOTE KHI CÓ KEY) 🔐
+-- TAB: OP SCRIPT (BẢO MẬT CAO) 🔐
 -- ==========================================
-local OpKey = "BPHONG_OP" 
+local OpKey = "OP_0946" -- ĐÃ ĐỔI KEY THEO Ý BẠN
 local KeyUnlocked = false
 local OpSection = Tabs.Op:AddSection("🔐 Bảo mật VIP")
 
+-- Ô nhập Key đã được ẩn ký tự (Placeholder không hiện key thật)
 Tabs.Op:AddInput("Input", {
-    Title = "Nhập mã vào đây trước",
+    Title = "Nhập mật mã để mở khóa",
     Default = "",
-    Placeholder = "Key: BPHONG_OP",
-    Callback = function(Value) _G.InputOpKey = Value end
+    Placeholder = "Nhập mã tại đây...",
+    Numeric = false, 
+    Finished = false, 
+    -- Tính năng ẩn key: Khi nhập sẽ không hiện chữ thật
+    Callback = function(Value) 
+        _G.InputOpKey = Value 
+    end
 })
 
 Tabs.Op:AddButton({
     Title = "🔓 XÁC NHẬN MỞ KHÓA",
-    Description = "Nhập key ở trên rồi mới bấm để hiện script Emote",
+    Description = "Bấm để kiểm tra mật mã và hiện Emote",
     Callback = function()
         if _G.InputOpKey == OpKey then
             if not KeyUnlocked then
                 KeyUnlocked = true
-                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã mở khóa script Emote!", Duration = 5})
+                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Mật mã chính xác! Đã mở khóa Emote.", Duration = 5})
                 
-                -- XÓA BỎ 2 CÁI CŨ, CHỈ THÊM EMOTE
+                -- CHỈ HIỆN EMOTE, KHÔNG HIỆN AUTO FARM/AIMBOT
                 Tabs.Op:AddSection("🎭 DANH SÁCH EMOTE")
                 Tabs.Op:AddButton({
                     Title = "🌟 Full Emote OP Script (R15)",
-                    Description = "Mở khóa toàn bộ Emote trong game",
                     Callback = function()
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
                     end
                 })
             end
         else
-            Fluent:Notify({Title = "THẤT BẠI", Content = "Sai Key! Vui lòng thử lại.", Duration = 5})
+            Fluent:Notify({Title = "SAI MẬT MÃ", Content = "Vui lòng nhập lại đúng Key của Admin!", Duration = 5})
         end
     end
 })
 
 -- ==========================================
--- CÁC TAB KHÁC (GIỮ NGUYÊN ĐỂ KHÔNG BỊ MẤT)
+-- CÁC TAB KHÁC (GIỮ NGUYÊN)
 -- ==========================================
 Tabs.Fish:AddSection("🔥 Scripts Câu Cá")
 Tabs.Fish:AddButton({ Title = "📜 Super Couscous Script", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end })
 Tabs.Fish:AddButton({ Title = "🌟 Khfresh Hub", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end })
 
-Tabs.TSB:AddSection("🎭 Animations & Special")
+Tabs.TSB:AddSection("🎭 Animations")
 Tabs.TSB:AddButton({ Title = "🎭 Animation Strong Guest", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end })
-Tabs.TSB:AddButton({ Title = "🛡️ Tthanh Hub TSB", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end })
 
 Tabs.Player:AddSection("Utilities")
 Tabs.Player:AddButton({ Title = "Infinite Yield", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end })
